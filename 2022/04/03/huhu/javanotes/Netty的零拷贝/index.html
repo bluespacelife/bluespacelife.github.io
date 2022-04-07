@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="/images/icon.png">
+    <title>Netty的零拷贝-星辰大海</title>
+
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+<link rel="stylesheet" href="/css/academicons.min.css">
+
+    
+<link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
+    
+<link rel="stylesheet" href="/css/katex.min.css">
+
+
+    
+<link rel="stylesheet" href="/css/bluespace.css">
+
+
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8070896123414715"
+     crossorigin="anonymous"></script>
+     
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+    <body>
+        <div class="container-fluid">
+    <nav class="nav">
+        <div class="collapse navbar-collapse" id="navbar-sm">
+            
+        </div>
+    </nav>
+</div>
+
+<div class="d-flex d-md-none" style="width: 100%; background-color: #394653">
+    
+    <nav class="navbar ml-auto">
+        <a class="navbar-brand" href="/">
+            
+            星辰大海
+            
+        </a>
+    </nav>
+</div>
+
+
+<div class="container d-none d-md-block my-navbar">
+    <nav class="navbar navbar-expand-sm navbar-light bg-transparent">
+        <a class="navbar-brand " href="/">
+            
+            星辰大海
+            
+        </a>
+        
+    </nav>
+</div>
+
+
+
+
+            <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        
+                <h1 class="mt-4 article-title page-title">
+                    Netty的零拷贝
+                </h1>
+                
+                    <p class="lead text-gray mt-3">作者：
+                        匿名
+                                    ; 发表于
+                                        2022-04-03
+                    </p>
+                    
+                        <div class="tags">
+                            <ul class="tag-list">
+                                
+                                    <li class="tag-list-item">
+                                        <a class="tag-list-link" href="/tags/netty,%20%E9%9B%B6%E6%8B%B7%E8%B4%9D/">
+                                            netty, 零拷贝
+                                        </a>
+                                    </li>
+                                    
+                            </ul>
+                        </div>
+                        
+    </div>
+</div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 pt-2">
+                            <div class="row">
+                                <div class="col-12">
+                                    <main>
+                                        <article class="article-text page-content">
+                                            <h2 id="Netty的零拷贝实现？"><a href="#Netty的零拷贝实现？" class="headerlink" title="Netty的零拷贝实现？"></a>Netty的零拷贝实现？</h2><ul>
+<li>Netty的接收和发送ByteBuffer采用DIRECT BUFFERS，使用堆外直接内存进行Socket读写，不需要进行字节缓冲区的二次拷贝。堆内存多了一次内存拷贝，JVM会将堆内存Buffer拷贝一份到直接内存中，然后才写入Socket中。ByteBuffer由ChannelConfig分配，而ChannelConfig创建ByteBufAllocator默认使用Direct Buffer</li>
+<li>CompositeByteBuf 类可以将多个 ByteBuf 合并为一个逻辑上的 ByteBuf, 避免了传统通过内存拷贝的方式将几个小Buffer合并成一个大的Buffer。addComponents方法将 header 与 body 合并为一个逻辑上的 ByteBuf, 这两个 ByteBuf 在CompositeByteBuf 内部都是单独存在的, CompositeByteBuf 只是逻辑上是一个整体</li>
+<li>通过 FileRegion 包装的FileChannel.tranferTo方法 实现文件传输, 可以直接将文件缓冲区的数据发送到目标 Channel，避免了传统通过循环write方式导致的内存拷贝问题</li>
+<li>通过 wrap方法, 我们可以将 byte[] 数组、ByteBuf、ByteBuffer等包装成一个 Netty ByteBuf 对象, 进而避免了拷贝操作</li>
+<li>Selector BUG：若Selector的轮询结果为空，也没有wakeup或新消息处理，则发生空轮询，CPU使用率100%，</li>
+<li>Netty的解决办法：对Selector的select操作周期进行统计，每完成一次空的select操作进行一次计数，若在某个周期内连续发生N次空轮询，则触发了epoll死循环bug。重建Selector，判断是否是其他线程发起的重建请求，若不是则将原SocketChannel从旧的Selector上去除注册，重新注册到新的Selector上，并将原来的Selector关闭</li>
+</ul>
+
+                                        </article>
+                                    </main>
+                                    
+                                        
+                                                
+                                </div>
+                            </div>
+                            <div class="row mt-5 mb-5">
+                                <div class="col-12">
+                                    <div class="row">
+    <div class="col">
+        <nav aria-label="paginator" class="paginator">
+            <ul class="pagination d-none d-md-flex pagination-lg justify-content-center">
+                <li class="page-item ">
+                    <a class="page-link" href="/2022/04/03/huhu/javanotes/Netty%E7%9A%84%E9%AB%98%E6%80%A7%E8%83%BD%E8%A1%A8%E7%8E%B0%E5%9C%A8%E5%93%AA%E4%BA%9B%E6%96%B9%E9%9D%A2/" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;
+                            Netty的高性能表现在哪些方面</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item ">
+                    <a class="page-link" href="/2022/04/03/huhu/javanotes/Java%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE/" aria-label="Next">
+                        <span aria-hidden="true">Java序列化协议
+                            &raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="pagination d-md-none justify-content-center">
+                <li class="page-item ">
+                    <a class="page-link" href="/2022/04/03/huhu/javanotes/Netty%E7%9A%84%E9%AB%98%E6%80%A7%E8%83%BD%E8%A1%A8%E7%8E%B0%E5%9C%A8%E5%93%AA%E4%BA%9B%E6%96%B9%E9%9D%A2/" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;
+                            Netty的高性能表现在哪些方面</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item ">
+                    <a class="page-link" href="/2022/04/03/huhu/javanotes/Java%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE/" aria-label="Next">
+                        <span aria-hidden="true">Java序列化协议
+                            &raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+                                </div>
+                            </div>
+                            <!-- <div class="row">
+                    <div class="col-12">
+                        <div id="vcomment"></div>
+                    </div>
+                </div> -->
+                        </div>
+                        <div class="col-md-3">
+                            <div class="container pt-4 page-sidebar">
+                                
+                                            <hr class="row">
+                                            <div class="row toc-container">
+                                                <div class="col-12">
+                                                    <h6>导航</h6>
+                                                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Netty%E7%9A%84%E9%9B%B6%E6%8B%B7%E8%B4%9D%E5%AE%9E%E7%8E%B0%EF%BC%9F"><span class="toc-text">Netty的零拷贝实现？</span></a></li></ol>
+                                                </div>
+                                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer>
+    <div class="jumbotron jumbotron-fluid mb-0">
+        <div class="container-fluid">
+            <div class="col text-center">
+                <div class="bottom-social">
+                    <div class="row">
+    <div class="col text-center">
+        <!-- <ul class="list-inline">
+            
+            <li class="list-inline-item">
+                
+                <a target="_blank" rel="noopener" href="https://github.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a target="_blank" rel="noopener" href="https://www.facebook.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a target="_blank" rel="noopener" href="https://www.pinterest.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-pinterest-p fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+        </ul> -->
+    </div>
+</div>
+                </div>
+                <p class="copyright text-muted">
+                    Copyright &copy;
+                    
+                        多谢关注！
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+                    
+    
+<script src="/js/jquery.slim.min.js"></script>
+
+    
+<script src="/js/bootstrap.bundle.min.js"></script>
+
+    
+<script src="/js/font-awesome.all.min.js"></script>
+
+    
+    <script defer src="/js/katex.min.js"></script>
+    <script defer src="/js/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+    
+
+
+
+<script src="/js/av.min.js"></script>
+
+
+<script src="/js/valine.min.js"></script>
+
+
+<script src="/js/applause-easy.js"></script>
+
+<script>
+$(document).ready(function() {
+    new ApplauseEasy({
+        id: 'applause-easy',
+        appId: "xxxxxxxxxx",
+        appKey: "xxxxxxxxxx",
+        img_src: "http://img.hanlindong.com/blog/site/clap.png",
+        img_width: "50px",
+        img_height: "50px",
+        trigger_every: 20,
+        trigger_fun: () => {alert("Thanks!");}
+    })
+})
+</script>
+
+<script src="/js/bluespace.js"></script>
+
+
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?123456789";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-11111111-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-11111111-1');
+</script>
+
+
+                        
+                            <script>
+    new Valine({
+        el: "#vcomment",
+        appId: "xxxxxxxxxx",
+        appKey: "xxxxxxxxxx",
+        notify: false,
+        varify: false,
+        avatar: 'identicon',
+        placeholder: "",
+        recordIP: true
+    })
+</script>
+                                
+    </body>
+
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="/images/icon.png">
+    <title>Netty的线程模型-星辰大海</title>
+
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+<link rel="stylesheet" href="/css/academicons.min.css">
+
+    
+<link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
+    
+<link rel="stylesheet" href="/css/katex.min.css">
+
+
+    
+<link rel="stylesheet" href="/css/bluespace.css">
+
+
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8070896123414715"
+     crossorigin="anonymous"></script>
+     
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+    <body>
+        <div class="container-fluid">
+    <nav class="nav">
+        <div class="collapse navbar-collapse" id="navbar-sm">
+            
+        </div>
+    </nav>
+</div>
+
+<div class="d-flex d-md-none" style="width: 100%; background-color: #394653">
+    
+    <nav class="navbar ml-auto">
+        <a class="navbar-brand" href="/">
+            
+            星辰大海
+            
+        </a>
+    </nav>
+</div>
+
+
+<div class="container d-none d-md-block my-navbar">
+    <nav class="navbar navbar-expand-sm navbar-light bg-transparent">
+        <a class="navbar-brand " href="/">
+            
+            星辰大海
+            
+        </a>
+        
+    </nav>
+</div>
+
+
+
+
+            <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        
+                <h1 class="mt-4 article-title page-title">
+                    Netty的线程模型
+                </h1>
+                
+                    <p class="lead text-gray mt-3">作者：
+                        匿名
+                                    ; 发表于
+                                        2022-04-03
+                    </p>
+                    
+                        <div class="tags">
+                            <ul class="tag-list">
+                                
+                                    <li class="tag-list-item">
+                                        <a class="tag-list-link" href="/tags/netty,%20nio,%20socket/">
+                                            netty, nio, socket
+                                        </a>
+                                    </li>
+                                    
+                            </ul>
+                        </div>
+                        
+    </div>
+</div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 pt-2">
+                            <div class="row">
+                                <div class="col-12">
+                                    <main>
+                                        <article class="article-text page-content">
+                                            <h2 id="Netty的线程模型？"><a href="#Netty的线程模型？" class="headerlink" title="Netty的线程模型？"></a>Netty的线程模型？</h2><ul>
+<li>Netty通过Reactor模型基于多路复用器接收并处理用户请求，内部实现了两个线程池，boss线程池和work线程池，其中boss线程池的线程负责处理请求的accept事件，当接收到accept事件的请求时，把对应的socket封装到一个NioSocketChannel中，并交给work线程池，其中work线程池负责请求的read和write事件，由对应的Handler处理</li>
+<li>单线程模型：<ul>
+<li>所有I/O操作都由一个线程完成，即多路复用、事件分发和处理都是在一个Reactor线程上完成的</li>
+<li>既要接收客户端的连接请求，向服务端发起连接，又要发送/读取请求或应答/响应消息</li>
+<li>一个NIO 线程同时处理成百上千的链路，性能上无法支撑，速度慢，若线程进入死循环，整个程序不可用，对于高负载、大并发的应用场景不合适</li>
+</ul>
+</li>
+<li>多线程模型：<ul>
+<li>有一个NIO 线程（Acceptor） 只负责监听服务端，接收客户端的TCP 连接请求</li>
+<li>NIO 线程池负责网络IO 的操作，即消息的读取、解码、编码和发送</li>
+<li>1 个NIO 线程可以同时处理N 条链路，但是1 个链路只对应1 个NIO 线程，这是为了防止发生并发操作问题</li>
+<li>但在并发百万客户端连接或需要安全认证时，一个Acceptor 线程可能会存在性能不足问题</li>
+</ul>
+</li>
+<li>主从多线程模型：<ul>
+<li>Acceptor 线程用于绑定监听端口，接收客户端连接</li>
+<li>将SocketChannel 从主线程池的Reactor 线程的多路复用器上移除，重新注册到Sub 线程池的线程上</li>
+<li>用于处理I/O 的读写等操作，从而保证mainReactor只负责接入认证、握手等操作</li>
+</ul>
+</li>
+</ul>
+
+                                        </article>
+                                    </main>
+                                    
+                                        
+                                                
+                                </div>
+                            </div>
+                            <div class="row mt-5 mb-5">
+                                <div class="col-12">
+                                    <div class="row">
+    <div class="col">
+        <nav aria-label="paginator" class="paginator">
+            <ul class="pagination d-none d-md-flex pagination-lg justify-content-center">
+                <li class="page-item ">
+                    <a class="page-link" href="/2022/04/03/huhu/javanotes/Netty%E7%B2%98%E5%8C%85%E5%92%8C%E6%8B%86%E5%8C%85/" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;
+                            Netty粘包和拆包</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item ">
+                    <a class="page-link" href="/2022/04/03/huhu/javanotes/Netty%E7%9A%84%E7%89%B9%E7%82%B9/" aria-label="Next">
+                        <span aria-hidden="true">Netty的特点
+                            &raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="pagination d-md-none justify-content-center">
+                <li class="page-item ">
+                    <a class="page-link" href="/2022/04/03/huhu/javanotes/Netty%E7%B2%98%E5%8C%85%E5%92%8C%E6%8B%86%E5%8C%85/" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;
+                            Netty粘包和拆包</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item ">
+                    <a class="page-link" href="/2022/04/03/huhu/javanotes/Netty%E7%9A%84%E7%89%B9%E7%82%B9/" aria-label="Next">
+                        <span aria-hidden="true">Netty的特点
+                            &raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+                                </div>
+                            </div>
+                            <!-- <div class="row">
+                    <div class="col-12">
+                        <div id="vcomment"></div>
+                    </div>
+                </div> -->
+                        </div>
+                        <div class="col-md-3">
+                            <div class="container pt-4 page-sidebar">
+                                
+                                            <hr class="row">
+                                            <div class="row toc-container">
+                                                <div class="col-12">
+                                                    <h6>导航</h6>
+                                                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Netty%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B%EF%BC%9F"><span class="toc-text">Netty的线程模型？</span></a></li></ol>
+                                                </div>
+                                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer>
+    <div class="jumbotron jumbotron-fluid mb-0">
+        <div class="container-fluid">
+            <div class="col text-center">
+                <div class="bottom-social">
+                    <div class="row">
+    <div class="col text-center">
+        <!-- <ul class="list-inline">
+            
+            <li class="list-inline-item">
+                
+                <a target="_blank" rel="noopener" href="https://github.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a target="_blank" rel="noopener" href="https://www.facebook.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a target="_blank" rel="noopener" href="https://www.pinterest.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-pinterest-p fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+        </ul> -->
+    </div>
+</div>
+                </div>
+                <p class="copyright text-muted">
+                    Copyright &copy;
+                    
+                        多谢关注！
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+                    
+    
+<script src="/js/jquery.slim.min.js"></script>
+
+    
+<script src="/js/bootstrap.bundle.min.js"></script>
+
+    
+<script src="/js/font-awesome.all.min.js"></script>
+
+    
+    <script defer src="/js/katex.min.js"></script>
+    <script defer src="/js/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+    
+
+
+
+<script src="/js/av.min.js"></script>
+
+
+<script src="/js/valine.min.js"></script>
+
+
+<script src="/js/applause-easy.js"></script>
+
+<script>
+$(document).ready(function() {
+    new ApplauseEasy({
+        id: 'applause-easy',
+        appId: "xxxxxxxxxx",
+        appKey: "xxxxxxxxxx",
+        img_src: "http://img.hanlindong.com/blog/site/clap.png",
+        img_width: "50px",
+        img_height: "50px",
+        trigger_every: 20,
+        trigger_fun: () => {alert("Thanks!");}
+    })
+})
+</script>
+
+<script src="/js/bluespace.js"></script>
+
+
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?123456789";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-11111111-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-11111111-1');
+</script>
+
+
+                        
+                            <script>
+    new Valine({
+        el: "#vcomment",
+        appId: "xxxxxxxxxx",
+        appKey: "xxxxxxxxxx",
+        notify: false,
+        varify: false,
+        avatar: 'identicon',
+        placeholder: "",
+        recordIP: true
+    })
+</script>
+                                
+    </body>
+
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="/images/icon.png">
+    <title>Java序列化协议-星辰大海</title>
+
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+<link rel="stylesheet" href="/css/academicons.min.css">
+
+    
+<link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
+    
+<link rel="stylesheet" href="/css/katex.min.css">
+
+
+    
+<link rel="stylesheet" href="/css/bluespace.css">
+
+
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8070896123414715"
+     crossorigin="anonymous"></script>
+     
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+    <body>
+        <div class="container-fluid">
+    <nav class="nav">
+        <div class="collapse navbar-collapse" id="navbar-sm">
+            
+        </div>
+    </nav>
+</div>
+
+<div class="d-flex d-md-none" style="width: 100%; background-color: #394653">
+    
+    <nav class="navbar ml-auto">
+        <a class="navbar-brand" href="/">
+            
+            星辰大海
+            
+        </a>
+    </nav>
+</div>
+
+
+<div class="container d-none d-md-block my-navbar">
+    <nav class="navbar navbar-expand-sm navbar-light bg-transparent">
+        <a class="navbar-brand " href="/">
+            
+            星辰大海
+            
+        </a>
+        
+    </nav>
+</div>
+
+
+
+
+            <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        
+                <h1 class="mt-4 article-title page-title">
+                    Java序列化协议
+                </h1>
+                
+                    <p class="lead text-gray mt-3">作者：
+                        匿名
+                                    ; 发表于
+                                        2022-04-03
+                    </p>
+                    
+                        <div class="tags">
+                            <ul class="tag-list">
+                                
+                                    <li class="tag-list-item">
+                                        <a class="tag-list-link" href="/tags/%E5%BA%8F%E5%88%97%E5%8C%96/">
+                                            序列化
+                                        </a>
+                                    </li>
+                                    
+                            </ul>
+                        </div>
+                        
+    </div>
+</div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 pt-2">
+                            <div class="row">
+                                <div class="col-12">
+                                    <main>
+                                        <article class="article-text page-content">
+                                            <h2 id="了解哪几种序列化协议？"><a href="#了解哪几种序列化协议？" class="headerlink" title="了解哪几种序列化协议？"></a>了解哪几种序列化协议？</h2><ul>
+<li>序列化（编码）是将对象序列化为二进制形式（字节数组），主要用于网络传输、数据持久化等；而反序列化（解码）则是将从网络、磁盘等读取的字节数组还原成原始对象，主要用于网络传输对象的解码，以便完成远程调用</li>
+<li>影响序列化性能的关键因素：<ul>
+<li>序列化后的码流大小（网络带宽的占用）</li>
+<li>序列化的性能（CPU资源占用）</li>
+<li>是否支持跨语言（异构系统的对接和开发语言切换）</li>
+</ul>
+</li>
+<li>Java默认提供的序列化：无法跨语言、序列化后的码流太大、序列化的性能差</li>
+<li>XML<ul>
+<li>优点：人机可读性好，可指定元素或特性的名称</li>
+<li>缺点：<ul>
+<li>序列化数据只包含数据本身以及类的结构，不包括类型标识和程序集信息</li>
+<li>只能序列化公共属性和字段</li>
+<li>不能序列化方法</li>
+<li>文件庞大，文件格式复杂，传输占带宽</li>
+</ul>
+</li>
+<li>适用场景：当做配置文件存储数据，实时数据转换</li>
+</ul>
+</li>
+<li>JSON：是一种轻量级的数据交换格式<ul>
+<li>优点：兼容性高、数据格式比较简单，易于读写、序列化后数据较小，可扩展性好，兼容性好、与XML相比，其协议比较简单，解析速度比较快</li>
+<li>缺点：数据的描述性比XML差、不适合性能要求为ms级别的情况、额外空间开销比较大</li>
+<li>适用场景（可替代ＸＭＬ）：跨防火墙访问、可调式性要求高、基于Web browser的Ajax请求、传输数据量相对小，实时性要求相对低（例如秒级别）的服务。</li>
+</ul>
+</li>
+<li>Fastjson，采用一种“假定有序快速匹配”的算法<ul>
+<li>优点：接口简单易用、目前java语言中最快的json库</li>
+<li>缺点：过于注重快，而偏离了“标准”及功能性、代码质量不高，文档不全</li>
+<li>适用场景：协议交互、Web输出、Android客户端</li>
+</ul>
+</li>
+<li>Thrift，不仅是序列化协议，还是一个RPC框架<ul>
+<li>优点：序列化后的体积小, 速度快、支持多种语言和丰富的数据类型、对于数据字段的增删具有较强的兼容性、支持二进制压缩编码</li>
+<li>缺点：使用者较少、跨防火墙访问时，不安全、不具有可读性，调试代码时相对困难、不能与其他传输层协议共同使用（例如HTTP）、无法支持向持久层直接读写数据，即不适合做数据持久化序列化协议</li>
+<li>适用场景：分布式系统的RPC解决方案</li>
+</ul>
+</li>
+<li>Avro，Hadoop的一个子项目，解决了JSON的冗长和没有IDL的问题<ul>
+<li>优点：支持丰富的数据类型、简单的动态语言结合功能、具有自我描述属性、提高了数据解析速度、快速可压缩的二进制数据形式、可以实现远程过程调用RPC、支持跨编程语言实现</li>
+<li>缺点：对于习惯于静态类型语言的用户不直观</li>
+<li>适用场景：在Hadoop中做Hive、Pig和MapReduce的持久化数据格式</li>
+</ul>
+</li>
+<li>Protobuf，将数据结构以.proto文件进行描述，通过代码生成工具可以生成对应数据结构的POJO对象和Protobuf相关的方法和属性<ul>
+<li>优点：序列化后码流小，性能高、结构化数据存储格式（XML JSON等）、通过标识字段的顺序，可以实现协议的前向兼容、结构化的文档更容易管理和维护</li>
+<li>缺点：需要依赖于工具生成代码、支持的语言相对较少，官方只支持Java 、C++ 、python</li>
+<li>适用场景：对性能要求高的RPC调用、具有良好的跨防火墙的访问属性、适合应用层对象的持久化</li>
+</ul>
+</li>
+<li>其它<ul>
+<li>protostuff 基于protobuf协议，但不需要配置proto文件，直接导包即可</li>
+<li>Jboss marshaling 可以直接序列化java类， 无须实java.io.Serializable接口</li>
+<li>Message pack 一个高效的二进制序列化格式</li>
+<li>Hessian 采用二进制协议的轻量级remoting onhttp工具</li>
+<li>kryo 基于protobuf协议，只支持java语言,需要注册（Registration），然后序列化（Output），反序列化（Input）</li>
+</ul>
+</li>
+</ul>
+<h2 id="如何选择序列化协议？"><a href="#如何选择序列化协议？" class="headerlink" title="如何选择序列化协议？"></a>如何选择序列化协议？</h2><ul>
+<li>具体场景</li>
+<li>对于公司间的系统调用，如果性能要求在100ms以上的服务，基于XML的SOAP协议是一个值得考虑的方案。</li>
+<li>基于Web browser的Ajax，以及Mobile app与服务端之间的通讯，JSON协议是首选</li>
+<li>对于性能要求不太高，或者以动态类型语言为主，或者传输数据载荷很小的的运用场景，JSON也是非常不错的选择</li>
+<li>对于调试环境比较恶劣的场景，采用JSON或XML能够极大的提高调试效率，降低系统开发成本</li>
+<li>当对性能和简洁性有极高要求的场景，Protobuf，Thrift，Avro之间具有一定的竞争关系</li>
+<li>对于T级别的数据的持久化应用场景，Protobuf和Avro是首要选择，如果持久化后的数据存储在hadoop子项目里，Avro会是更好的选择</li>
+<li>对于持久层非Hadoop项目，以静态类型语言为主的应用场景，Protobuf会更符合静态类型语言工程师的开发习惯</li>
+<li>由于Avro的设计理念偏向于动态类型语言，对于动态语言为主的应用场景，Avro是更好的选择</li>
+<li>如果需要提供一个完整的RPC解决方案，Thrift是一个好的选择</li>
+<li>如果序列化之后需要支持不同的传输层协议，或者需要跨防火墙访问的高性能场景，Protobuf可以优先考虑</li>
+<li>protobuf的数据类型有多种：bool、double、float、int32、int64、string、bytes、enum、message</li>
+<li>protobuf的限定符：required: 必须赋值，不能为空、optional:字段可以赋值，也可以不赋值、repeated: 该字段可以重复任意次数（包括0次）、枚举；只能用指定的常量集中的一个值作为其值；</li>
+<li>protobuf的基本规则：<ul>
+<li>每个消息中必须至少留有一个required类型的字段、包含0个或多个optional类型的字段</li>
+<li>repeated表示的字段可以包含0个或多个数据；</li>
+<li>[1,15]之内的标识号在编码的时候会占用一个字节（常用）</li>
+<li>[16,2047]之内的标识号则占用2个字节，标识号一定不能重复、使用消息类型，也可以将消息嵌套任意多层，可用嵌套消息类型来代替组</li>
+</ul>
+</li>
+<li>protobuf的消息升级原则：<ul>
+<li>不要更改任何已有的字段的数值标识</li>
+<li>不能移除已经存在的required字段，optional和repeated类型的字段可以被移除，但要保留标号不能被重用</li>
+<li>新添加的字段必须是optional或repeated</li>
+<li>因为旧版本程序无法读取或写入新增的required限定符的字段</li>
+</ul>
+</li>
+<li>编译器为每一个消息类型生成了一个.java文件，以及一个特殊的Builder类（该类是用来创建消息类接口的），如：UserProto.User.Builder builder = UserProto.User.newBuilder();builder.build()</li>
+<li>Netty中的使用：ProtobufVarint32FrameDecoder 是用于处理半包消息的解码类；ProtobufDecoder(UserProto.User.getDefaultInstance())这是创建的UserProto.java文件中的解码类；ProtobufVarint32LengthFieldPrepender 对protobuf协议的消息头上加上一个长度为32的整形字段，用于标志这个消息的长度的类；ProtobufEncoder 是编码类</li>
+<li>将StringBuilder转换为ByteBuf类型：copiedBuffer()方法</li>
+</ul>
+
+                                        </article>
+                                    </main>
+                                    
+                                        
+                                                
+                                </div>
+                            </div>
+                            <div class="row mt-5 mb-5">
+                                <div class="col-12">
+                                    <div class="row">
+    <div class="col">
+        <nav aria-label="paginator" class="paginator">
+            <ul class="pagination d-none d-md-flex pagination-lg justify-content-center">
+                <li class="page-item ">
+                    <a class="page-link" href="/2022/04/03/huhu/javanotes/Netty%E7%9A%84%E9%9B%B6%E6%8B%B7%E8%B4%9D/" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;
+                            Netty的零拷贝</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item ">
+                    <a class="page-link" href="/2022/04/03/huhu/javanotes/Netty%E7%B2%98%E5%8C%85%E5%92%8C%E6%8B%86%E5%8C%85/" aria-label="Next">
+                        <span aria-hidden="true">Netty粘包和拆包
+                            &raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="pagination d-md-none justify-content-center">
+                <li class="page-item ">
+                    <a class="page-link" href="/2022/04/03/huhu/javanotes/Netty%E7%9A%84%E9%9B%B6%E6%8B%B7%E8%B4%9D/" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;
+                            Netty的零拷贝</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item ">
+                    <a class="page-link" href="/2022/04/03/huhu/javanotes/Netty%E7%B2%98%E5%8C%85%E5%92%8C%E6%8B%86%E5%8C%85/" aria-label="Next">
+                        <span aria-hidden="true">Netty粘包和拆包
+                            &raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+                                </div>
+                            </div>
+                            <!-- <div class="row">
+                    <div class="col-12">
+                        <div id="vcomment"></div>
+                    </div>
+                </div> -->
+                        </div>
+                        <div class="col-md-3">
+                            <div class="container pt-4 page-sidebar">
+                                
+                                            <hr class="row">
+                                            <div class="row toc-container">
+                                                <div class="col-12">
+                                                    <h6>导航</h6>
+                                                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E5%93%AA%E5%87%A0%E7%A7%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%EF%BC%9F"><span class="toc-text">了解哪几种序列化协议？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%EF%BC%9F"><span class="toc-text">如何选择序列化协议？</span></a></li></ol>
+                                                </div>
+                                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer>
+    <div class="jumbotron jumbotron-fluid mb-0">
+        <div class="container-fluid">
+            <div class="col text-center">
+                <div class="bottom-social">
+                    <div class="row">
+    <div class="col text-center">
+        <!-- <ul class="list-inline">
+            
+            <li class="list-inline-item">
+                
+                <a target="_blank" rel="noopener" href="https://github.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a target="_blank" rel="noopener" href="https://www.facebook.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a target="_blank" rel="noopener" href="https://www.pinterest.com/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-pinterest-p fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+            <li class="list-inline-item">
+                
+                <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/xxxxx">
+                    <span class="fa-stack fa-2x icon-link">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                
+            </li>
+            
+        </ul> -->
+    </div>
+</div>
+                </div>
+                <p class="copyright text-muted">
+                    Copyright &copy;
+                    
+                        多谢关注！
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+                    
+    
+<script src="/js/jquery.slim.min.js"></script>
+
+    
+<script src="/js/bootstrap.bundle.min.js"></script>
+
+    
+<script src="/js/font-awesome.all.min.js"></script>
+
+    
+    <script defer src="/js/katex.min.js"></script>
+    <script defer src="/js/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+    
+
+
+
+<script src="/js/av.min.js"></script>
+
+
+<script src="/js/valine.min.js"></script>
+
+
+<script src="/js/applause-easy.js"></script>
+
+<script>
+$(document).ready(function() {
+    new ApplauseEasy({
+        id: 'applause-easy',
+        appId: "xxxxxxxxxx",
+        appKey: "xxxxxxxxxx",
+        img_src: "http://img.hanlindong.com/blog/site/clap.png",
+        img_width: "50px",
+        img_height: "50px",
+        trigger_every: 20,
+        trigger_fun: () => {alert("Thanks!");}
+    })
+})
+</script>
+
+<script src="/js/bluespace.js"></script>
+
+
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?123456789";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-11111111-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-11111111-1');
+</script>
+
+
+                        
+                            <script>
+    new Valine({
+        el: "#vcomment",
+        appId: "xxxxxxxxxx",
+        appKey: "xxxxxxxxxx",
+        notify: false,
+        varify: false,
+        avatar: 'identicon',
+        placeholder: "",
+        recordIP: true
+    })
+</script>
+                                
+    </body>
+
+</html>
