@@ -1,0 +1,74 @@
+.system0-container {
+  width: 100%;
+  height: 100%;
+  /* background-color: #111; */
+}
+
+.system0-banner {
+  width: 100%;
+  height: 10rem;
+  /* background-color: red; */
+  font-size: 48pt;
+  color: rgb(255, 228, 107);
+  text-align: center;
+  line-height: 10rem;
+}
+
+.system0-post-row-lines {
+  width: 100%;
+  height: 100%;
+  /* background-color: #111; */
+  margin-top: 5rem;
+}
+
+.system0-post-row-line {
+  border: none;
+  border-top: 2px solid #333;
+}
+
+.system0-artical-row {
+  width: 55%;
+  height: 15%;
+  padding-bottom: 1rem;
+  /* background-color: blueviolet; */
+  margin: 0 auto;
+}
+
+.system0-artical-row-row {
+  width: 90%;
+  height: 90%;
+  /* background-color: aqua; */
+  margin: 0 auto;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  padding-bottom: 2rem;
+}
+
+.system0-artical-row-thumb {
+  width: 6rem;
+  height: 6rem;
+  background-color: rgb(255, 228, 107);
+  margin-left: 2rem;
+}
+
+.system0-artical-row-simple {
+  /* background-color: blue; */
+  margin-left: 1rem;
+}
+
+.system0-artical-row-simple-a {
+  text-decoration: none;
+}
+
+.system0-artical-row-simple-title {
+  color: rgb(255, 228, 107);
+  font-size: 16pt;
+}
+
+.system0-artical-row-simple-author {
+  color: rgb(255, 228, 107);
+  font-size: 12pt;
+  display: flex;
+  margin-top: 1rem;
+}

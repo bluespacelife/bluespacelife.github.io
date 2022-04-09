@@ -1,545 +1,309 @@
 <!DOCTYPE html>
-<html lang="zh-cmn-Hans">
+<html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <link rel="shortcut icon" href="/images/icon.png">
-    <title>星辰大海</title>
-
+    
     
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     
-<link rel="stylesheet" href="/css/academicons.min.css">
+<link rel="stylesheet" href="/css/bluespacelife.css">
 
+
+    <!-- system0 -->
     
-<link rel="stylesheet" href="/css/font-awesome.all.min.css">
+<link rel="stylesheet" href="/css/system0/system0.css">
 
-    
-<link rel="stylesheet" href="/css/katex.min.css">
-
-
-    
-<link rel="stylesheet" href="/css/bluespace.css">
-
-
-
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8070896123414715"
-     crossorigin="anonymous"></script>
      
 <meta name="generator" content="Hexo 5.4.0"></head>
-<body>
 
 
-    <img class="d-none d-sm-block" src="/images/head.jpg" style="width: 100%;height: 20%;">
-    <img class="d-sm-none" src="/images/head.jpg" style="width: 100%;">
-    
-<div class="container">
-    <div class="row pt-3">
-        <div class="col-md-9">
-            <div class="row">
-                <div class="col">
-                    
-                    <div class="row">
-    <div class="col">
-        <a href="/2022/04/03/huhu/javanotes/BIO-NIO-AIO/" class="index-card-link">
-            <div class="card-body index-card-box">
-                <h4 class="card-title text-dark article-title">
-                    BIO、NIO和AIO的区别
-                </h4>
-                <h6 class="card-subtitle mt-2 text-muted">
-                    作者：
-                    
-                                匿名
-                                ; 发表于
-                                    2022-04-03
-                </h6>
-                <p class="card-text text-dark mt-2 article-text">
-                    
-                        BIO、NIO和AIO的区别
-BIO：一个连接一个线程，客户端有连接请求时服务器端就需要启动一个线程进行处理。线程开销大
-伪异步IO：将请求连接放入线程池，一对多，但线程还是很宝贵的资源
-NIO：一个请求一个线程，但客户端发送的连接请求都会注册到多路复用器上，多路复用器轮询到连接有I/O请求时才启动一个线程进行处理
-AIO：一个有效请求一个线程，客户端的I/O请求都是由OS先完成了再通知服务...
-                     
-                </p>
-            </div>
-        </a>
-    </div>
-</div>
-                    <hr class="row">
-                    
-                    <div class="row">
-    <div class="col">
-        <a href="/2022/04/03/huhu/javanotes/Java-NIO%E7%9A%84%E7%BB%84%E6%88%90%E5%85%83%E7%B4%A0/" class="index-card-link">
-            <div class="card-body index-card-box">
-                <h4 class="card-title text-dark article-title">
-                    Java NIO 的组成元素
-                </h4>
-                <h6 class="card-subtitle mt-2 text-muted">
-                    作者：
-                    
-                                匿名
-                                ; 发表于
-                                    2022-04-03
-                </h6>
-                <p class="card-text text-dark mt-2 article-text">
-                    
-                        NIO的组成？
-Buffer：与Channel进行交互，数据是从Channel读入缓冲区，从缓冲区写入Channel中的
-flip方法 ： 反转此缓冲区，将position给limit，然后将position置为0，其实就是切换读写模式
-clear方法 ：清除此缓冲区，将position置为0，把capacity的值给limit
-rewind方法 ： 重绕此缓冲区，将position置为0
-...
-                     
-                </p>
-            </div>
-        </a>
-    </div>
-</div>
-                    <hr class="row">
-                    
-                    <div class="row">
-    <div class="col">
-        <a href="/2022/04/03/huhu/javanotes/Netty-NIOEventLoopGroup%E6%BA%90%E7%A0%81/" class="index-card-link">
-            <div class="card-body index-card-box">
-                <h4 class="card-title text-dark article-title">
-                    Netty NIOEventLoopGroup源码
-                </h4>
-                <h6 class="card-subtitle mt-2 text-muted">
-                    作者：
-                    
-                                匿名
-                                ; 发表于
-                                    2022-04-03
-                </h6>
-                <p class="card-text text-dark mt-2 article-text">
-                    
-                        NIOEventLoopGroup源码？
-NioEventLoopGroup(其实是MultithreadEventExecutorGroup) 内部维护一个类型为 EventExecutor children [], 默认大小是处理器核数 * 2, 这样就构成了一个线程池，初始化EventExecutor时NioEventLoopGroup重载newChild方法，所以children元素...
-                     
-                </p>
-            </div>
-        </a>
-    </div>
-</div>
-                    <hr class="row">
-                    
-                    <div class="row">
-    <div class="col">
-        <a href="/2022/04/03/huhu/javanotes/Netty%E7%9A%84%E9%AB%98%E6%80%A7%E8%83%BD%E8%A1%A8%E7%8E%B0%E5%9C%A8%E5%93%AA%E4%BA%9B%E6%96%B9%E9%9D%A2/" class="index-card-link">
-            <div class="card-body index-card-box">
-                <h4 class="card-title text-dark article-title">
-                    Netty的高性能表现在哪些方面
-                </h4>
-                <h6 class="card-subtitle mt-2 text-muted">
-                    作者：
-                    
-                                匿名
-                                ; 发表于
-                                    2022-04-03
-                </h6>
-                <p class="card-text text-dark mt-2 article-text">
-                    
-                        Netty的高性能表现在哪些方面？
-心跳，对服务端：会定时清除闲置会话inactive(netty5)，对客户端:用来检测会话是否断开，是否重来，检测网络延迟，其中idleStateHandler类 用来检测会话状态
-串行无锁化设计，即消息的处理尽可能在同一个线程内完成，期间不进行线程切换，这样就避免了多线程竞争和同步锁。表面上看，串行化设计似乎CPU利用率不高，并发程度不够。但是，通过调整...
-                     
-                </p>
-            </div>
-        </a>
-    </div>
-</div>
-                    <hr class="row">
-                    
-                    <div class="row">
-    <div class="col">
-        <a href="/2022/04/03/huhu/javanotes/Netty%E7%9A%84%E9%9B%B6%E6%8B%B7%E8%B4%9D/" class="index-card-link">
-            <div class="card-body index-card-box">
-                <h4 class="card-title text-dark article-title">
-                    Netty的零拷贝
-                </h4>
-                <h6 class="card-subtitle mt-2 text-muted">
-                    作者：
-                    
-                                匿名
-                                ; 发表于
-                                    2022-04-03
-                </h6>
-                <p class="card-text text-dark mt-2 article-text">
-                    
-                        Netty的零拷贝实现？
-Netty的接收和发送ByteBuffer采用DIRECT BUFFERS，使用堆外直接内存进行Socket读写，不需要进行字节缓冲区的二次拷贝。堆内存多了一次内存拷贝，JVM会将堆内存Buffer拷贝一份到直接内存中，然后才写入Socket中。ByteBuffer由ChannelConfig分配，而ChannelConfig创建ByteBufAllocator默认...
-                     
-                </p>
-            </div>
-        </a>
-    </div>
-</div>
-                    <hr class="row">
-                    
-                    <div class="row">
-    <div class="col">
-        <a href="/2022/04/03/huhu/javanotes/Java%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE/" class="index-card-link">
-            <div class="card-body index-card-box">
-                <h4 class="card-title text-dark article-title">
-                    Java序列化协议
-                </h4>
-                <h6 class="card-subtitle mt-2 text-muted">
-                    作者：
-                    
-                                匿名
-                                ; 发表于
-                                    2022-04-03
-                </h6>
-                <p class="card-text text-dark mt-2 article-text">
-                    
-                        了解哪几种序列化协议？
-序列化（编码）是将对象序列化为二进制形式（字节数组），主要用于网络传输、数据持久化等；而反序列化（解码）则是将从网络、磁盘等读取的字节数组还原成原始对象，主要用于网络传输对象的解码，以便完成远程调用
-影响序列化性能的关键因素：
-序列化后的码流大小（网络带宽的占用）
-序列化的性能（CPU资源占用）
-是否支持跨语言（异构系统的对接和开发语言切换）
-
-
-Java默认提供的序...
-                     
-                </p>
-            </div>
-        </a>
-    </div>
-</div>
-                    <hr class="row">
-                    
-                    <div class="row">
-    <div class="col">
-        <a href="/2022/04/03/huhu/javanotes/Netty%E7%B2%98%E5%8C%85%E5%92%8C%E6%8B%86%E5%8C%85/" class="index-card-link">
-            <div class="card-body index-card-box">
-                <h4 class="card-title text-dark article-title">
-                    Netty粘包和拆包
-                </h4>
-                <h6 class="card-subtitle mt-2 text-muted">
-                    作者：
-                    
-                                匿名
-                                ; 发表于
-                                    2022-04-03
-                </h6>
-                <p class="card-text text-dark mt-2 article-text">
-                    
-                        TCP 粘包/拆包的原因及解决方法？
-TCP是以流的方式来处理数据，一个完整的包可能会被TCP拆分成多个包进行发送，也可能把小的封装成一个大的数据包发送。
-TCP粘包/分包的原因：
-应用程序写入的字节大小大于套接字发送缓冲区的大小，会发生拆包现象
-而应用程序写入数据小于套接字缓冲区大小，网卡将应用多次写入的数据发送到网络上，这将会发生粘包现象
-进行MSS大小的TCP分段，当TCP报文长度-T...
-                     
-                </p>
-            </div>
-        </a>
-    </div>
-</div>
-                    <hr class="row">
-                    
-                    <div class="row">
-    <div class="col">
-        <a href="/2022/04/03/huhu/javanotes/Netty%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/" class="index-card-link">
-            <div class="card-body index-card-box">
-                <h4 class="card-title text-dark article-title">
-                    Netty的线程模型
-                </h4>
-                <h6 class="card-subtitle mt-2 text-muted">
-                    作者：
-                    
-                                匿名
-                                ; 发表于
-                                    2022-04-03
-                </h6>
-                <p class="card-text text-dark mt-2 article-text">
-                    
-                        Netty的线程模型？
-Netty通过Reactor模型基于多路复用器接收并处理用户请求，内部实现了两个线程池，boss线程池和work线程池，其中boss线程池的线程负责处理请求的accept事件，当接收到accept事件的请求时，把对应的socket封装到一个NioSocketChannel中，并交给work线程池，其中work线程池负责请求的read和write事件，由对应的Handl...
-                     
-                </p>
-            </div>
-        </a>
-    </div>
-</div>
-                    <hr class="row">
-                    
-                    <div class="row">
-    <div class="col">
-        <a href="/2022/04/03/huhu/javanotes/Netty%E7%9A%84%E7%89%B9%E7%82%B9/" class="index-card-link">
-            <div class="card-body index-card-box">
-                <h4 class="card-title text-dark article-title">
-                    Netty的特点
-                </h4>
-                <h6 class="card-subtitle mt-2 text-muted">
-                    作者：
-                    
-                                匿名
-                                ; 发表于
-                                    2022-04-03
-                </h6>
-                <p class="card-text text-dark mt-2 article-text">
-                    
-                        Netty的特点
-一个高性能、异步事件驱动的NIO框架，它提供了对TCP、UDP和文件传输的支持
-使用更高效的socket底层，对epoll空轮询引起的cpu占用飙升在内部进行了处理，避免了直接使用NIO的陷阱，简化了NIO的处理方式。
-采用多种decoder/encoder 支持，对TCP粘包/分包进行自动化处理
-可使用接受/处理线程池，提高连接效率，对重连、心跳检测的简单支持
-可配置IO...
-                     
-                </p>
-            </div>
-        </a>
-    </div>
-</div>
-                    <hr class="row">
-                    
-                    <div class="row">
-    <div class="col">
-        <a href="/2022/04/03/huhu/javanotes/Java%E5%9F%BA%E7%A1%80/" class="index-card-link">
-            <div class="card-body index-card-box">
-                <h4 class="card-title text-dark article-title">
-                    Java基础
-                </h4>
-                <h6 class="card-subtitle mt-2 text-muted">
-                    作者：
-                    
-                                匿名
-                                ; 发表于
-                                    2022-04-03
-                </h6>
-                <p class="card-text text-dark mt-2 article-text">
-                    
-                        在 Java 中，为什么不允许从静态方法中访问非静态变量？
-Java 中不能从静态上下文访问非静态数据只是因为非静态变量是跟具体的对象实例关联的，而静态的却没有和任何实例关联
-
-在 Java 中，什么时候用重载，什么时候用重写？
-如果你看到一个类的不同实现有着不同的方式来做同一件事，那么就应该用重写（overriding），而重载（overloading）是用不同的输入做同一件事
-在 Jav...
-                     
-                </p>
-            </div>
-        </a>
-    </div>
-</div>
-                    <hr class="row">
-                    
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="paginator">
-                        <div class="row">
-    <div class="col">
-        <nav aria-label="paginator" class="paginator">
-            <ul class="pagination d-none d-md-flex pagination-lg justify-content-center">
-                <li class="page-item  disabled ">
-                    <a class="page-link" href="/" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;
-                            更早的</span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                </li>
-                <li class="page-item  disabled ">
-                    <a class="page-link" href="/" aria-label="Next">
-                        <span aria-hidden="true">更晚的
-                            &raquo;</span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </li>
-            </ul>
-            <ul class="pagination d-md-none justify-content-center">
-                <li class="page-item  disabled ">
-                    <a class="page-link" href="/" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;
-                            更早的</span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                </li>
-                <li class="page-item  disabled ">
-                    <a class="page-link" href="/" aria-label="Next">
-                        <span aria-hidden="true">更晚的
-                            &raquo;</span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 pt-3">
-            
-
-    <div class="row">
-    <div class="col">
-        <h6>标签</h6>
-        <div class="tags">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/netty-nio-socket/" rel="tag">netty, nio, socket</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netty/" rel="tag">netty</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BA%8F%E5%88%97%E5%8C%96/" rel="tag">序列化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netty-nio-%E6%BA%90%E7%A0%81/" rel="tag">netty, nio, 源码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/netty-%E9%9B%B6%E6%8B%B7%E8%B4%9D/" rel="tag">netty, 零拷贝</a><span class="tag-list-count">1</span></li></ul>
-        </div>
-    </div>
-</div>
-    <hr class="row">
-
-
-
-
-
-    <div class="row">
-    <div class="col">
-        <h6>归档</h6>
-        <div class="archive">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li></ul>
-        </div>
-    </div>
-</div>
-    <hr class="row">
-
-
-
-        </div>
-    </div>
-</div>
-
-<footer>
-    <div class="jumbotron jumbotron-fluid mb-0">
-        <div class="container-fluid">
-            <div class="col text-center">
-                <div class="bottom-social">
-                    <div class="row">
-    <div class="col text-center">
-        <!-- <ul class="list-inline">
-            
-            <li class="list-inline-item">
-                
-                <a target="_blank" rel="noopener" href="https://github.com/xxxxx">
-                    <span class="fa-stack fa-2x icon-link">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                    </span>
-                </a>
-                
-            </li>
-            
-            <li class="list-inline-item">
-                
-                <a target="_blank" rel="noopener" href="https://www.facebook.com/xxxxx">
-                    <span class="fa-stack fa-2x icon-link">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                    </span>
-                </a>
-                
-            </li>
-            
-            <li class="list-inline-item">
-                
-                <a target="_blank" rel="noopener" href="https://www.pinterest.com/xxxxx">
-                    <span class="fa-stack fa-2x icon-link">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fab fa-pinterest-p fa-stack-1x fa-inverse"></i>
-                    </span>
-                </a>
-                
-            </li>
-            
-            <li class="list-inline-item">
-                
-                <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/xxxxx">
-                    <span class="fa-stack fa-2x icon-link">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
-                    </span>
-                </a>
-                
-            </li>
-            
-        </ul> -->
-    </div>
-</div>
-                </div>
-                <p class="copyright text-muted">
-                    Copyright &copy;
-                    
-                        多谢关注！
-                </p>
-            </div>
-        </div>
-    </div>
-</footer>
-
-    
 <script src="/js/jquery.slim.min.js"></script>
 
-    
-<script src="/js/bootstrap.bundle.min.js"></script>
 
-    
-<script src="/js/font-awesome.all.min.js"></script>
-
-    
-    <script defer src="/js/katex.min.js"></script>
-    <script defer src="/js/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
-    
+<script src="/js/bluespacelife.js"></script>
 
 
+<body>
+  <div id="home-gate" class="home-gate">
+    <div class="home-gate-universal" onclick="goToSystem0()">
+      星辰
+    </div>
+    <div class="home-gate-sea" onclick="goToSystem1()">
+      大海
+    </div>
+  </div>
+  <div id="system0" class="system0-container" hidden="hidden">
+    <div class="system0-banner">
+    星辰
+</div>
 
-<script src="/js/av.min.js"></script>
+    <hr class="system0-post-row-line">
 
+    <div class="system0-post-row-lines">
+      
+        <div class="system0-artical-row">
+    <div class="system0-artical-row-row">
+        <div class="system0-artical-row-thumb">
 
-<script src="/js/valine.min.js"></script>
+        </div>
+        <div class="system0-artical-row-simple">
+            <a href="/2022/04/03/huhu/javanotes/BIO-NIO-AIO/" class="system0-artical-row-simple-a">
+            <div class="system0-artical-row-simple-title">
+                BIO、NIO和AIO的区别
+            </div>
+            <div class="system0-artical-row-simple-author">
+                <div>
+                    作者： 匿名 
+                </div>
+                ；
+                <div>
+                    时间：2022-04-03
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
 
+    <hr class="system0-post-row-line">
+</div>
+      
+        <div class="system0-artical-row">
+    <div class="system0-artical-row-row">
+        <div class="system0-artical-row-thumb">
 
-<script src="/js/applause-easy.js"></script>
+        </div>
+        <div class="system0-artical-row-simple">
+            <a href="/2022/04/03/huhu/javanotes/Java-NIO%E7%9A%84%E7%BB%84%E6%88%90%E5%85%83%E7%B4%A0/" class="system0-artical-row-simple-a">
+            <div class="system0-artical-row-simple-title">
+                Java NIO 的组成元素
+            </div>
+            <div class="system0-artical-row-simple-author">
+                <div>
+                    作者： 匿名 
+                </div>
+                ；
+                <div>
+                    时间：2022-04-03
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
 
-<script>
-$(document).ready(function() {
-    new ApplauseEasy({
-        id: 'applause-easy',
-        appId: "xxxxxxxxxx",
-        appKey: "xxxxxxxxxx",
-        img_src: "http://img.hanlindong.com/blog/site/clap.png",
-        img_width: "50px",
-        img_height: "50px",
-        trigger_every: 20,
-        trigger_fun: () => {alert("Thanks!");}
-    })
-})
-</script>
+    <hr class="system0-post-row-line">
+</div>
+      
+        <div class="system0-artical-row">
+    <div class="system0-artical-row-row">
+        <div class="system0-artical-row-thumb">
 
-<script src="/js/bluespace.js"></script>
+        </div>
+        <div class="system0-artical-row-simple">
+            <a href="/2022/04/03/huhu/javanotes/Netty-NIOEventLoopGroup%E6%BA%90%E7%A0%81/" class="system0-artical-row-simple-a">
+            <div class="system0-artical-row-simple-title">
+                Netty NIOEventLoopGroup源码
+            </div>
+            <div class="system0-artical-row-simple-author">
+                <div>
+                    作者： 匿名 
+                </div>
+                ；
+                <div>
+                    时间：2022-04-03
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
 
+    <hr class="system0-post-row-line">
+</div>
+      
+        <div class="system0-artical-row">
+    <div class="system0-artical-row-row">
+        <div class="system0-artical-row-thumb">
 
+        </div>
+        <div class="system0-artical-row-simple">
+            <a href="/2022/04/03/huhu/javanotes/Netty%E7%9A%84%E9%AB%98%E6%80%A7%E8%83%BD%E8%A1%A8%E7%8E%B0%E5%9C%A8%E5%93%AA%E4%BA%9B%E6%96%B9%E9%9D%A2/" class="system0-artical-row-simple-a">
+            <div class="system0-artical-row-simple-title">
+                Netty的高性能表现在哪些方面
+            </div>
+            <div class="system0-artical-row-simple-author">
+                <div>
+                    作者： 匿名 
+                </div>
+                ；
+                <div>
+                    时间：2022-04-03
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
 
-<script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?123456789";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
+    <hr class="system0-post-row-line">
+</div>
+      
+        <div class="system0-artical-row">
+    <div class="system0-artical-row-row">
+        <div class="system0-artical-row-thumb">
 
+        </div>
+        <div class="system0-artical-row-simple">
+            <a href="/2022/04/03/huhu/javanotes/Netty%E7%9A%84%E9%9B%B6%E6%8B%B7%E8%B4%9D/" class="system0-artical-row-simple-a">
+            <div class="system0-artical-row-simple-title">
+                Netty的零拷贝
+            </div>
+            <div class="system0-artical-row-simple-author">
+                <div>
+                    作者： 匿名 
+                </div>
+                ；
+                <div>
+                    时间：2022-04-03
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
 
+    <hr class="system0-post-row-line">
+</div>
+      
+        <div class="system0-artical-row">
+    <div class="system0-artical-row-row">
+        <div class="system0-artical-row-thumb">
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-11111111-1"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'UA-11111111-1');
-</script>
+        </div>
+        <div class="system0-artical-row-simple">
+            <a href="/2022/04/03/huhu/javanotes/Java%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE/" class="system0-artical-row-simple-a">
+            <div class="system0-artical-row-simple-title">
+                Java序列化协议
+            </div>
+            <div class="system0-artical-row-simple-author">
+                <div>
+                    作者： 匿名 
+                </div>
+                ；
+                <div>
+                    时间：2022-04-03
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
 
+    <hr class="system0-post-row-line">
+</div>
+      
+        <div class="system0-artical-row">
+    <div class="system0-artical-row-row">
+        <div class="system0-artical-row-thumb">
 
+        </div>
+        <div class="system0-artical-row-simple">
+            <a href="/2022/04/03/huhu/javanotes/Netty%E7%B2%98%E5%8C%85%E5%92%8C%E6%8B%86%E5%8C%85/" class="system0-artical-row-simple-a">
+            <div class="system0-artical-row-simple-title">
+                Netty粘包和拆包
+            </div>
+            <div class="system0-artical-row-simple-author">
+                <div>
+                    作者： 匿名 
+                </div>
+                ；
+                <div>
+                    时间：2022-04-03
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
+
+    <hr class="system0-post-row-line">
+</div>
+      
+        <div class="system0-artical-row">
+    <div class="system0-artical-row-row">
+        <div class="system0-artical-row-thumb">
+
+        </div>
+        <div class="system0-artical-row-simple">
+            <a href="/2022/04/03/huhu/javanotes/Netty%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/" class="system0-artical-row-simple-a">
+            <div class="system0-artical-row-simple-title">
+                Netty的线程模型
+            </div>
+            <div class="system0-artical-row-simple-author">
+                <div>
+                    作者： 匿名 
+                </div>
+                ；
+                <div>
+                    时间：2022-04-03
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
+
+    <hr class="system0-post-row-line">
+</div>
+      
+        <div class="system0-artical-row">
+    <div class="system0-artical-row-row">
+        <div class="system0-artical-row-thumb">
+
+        </div>
+        <div class="system0-artical-row-simple">
+            <a href="/2022/04/03/huhu/javanotes/Netty%E7%9A%84%E7%89%B9%E7%82%B9/" class="system0-artical-row-simple-a">
+            <div class="system0-artical-row-simple-title">
+                Netty的特点
+            </div>
+            <div class="system0-artical-row-simple-author">
+                <div>
+                    作者： 匿名 
+                </div>
+                ；
+                <div>
+                    时间：2022-04-03
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
+
+    <hr class="system0-post-row-line">
+</div>
+      
+        <div class="system0-artical-row">
+    <div class="system0-artical-row-row">
+        <div class="system0-artical-row-thumb">
+
+        </div>
+        <div class="system0-artical-row-simple">
+            <a href="/2022/04/03/huhu/javanotes/Java%E5%9F%BA%E7%A1%80/" class="system0-artical-row-simple-a">
+            <div class="system0-artical-row-simple-title">
+                Java基础
+            </div>
+            <div class="system0-artical-row-simple-author">
+                <div>
+                    作者： 匿名 
+                </div>
+                ；
+                <div>
+                    时间：2022-04-03
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
+
+    <hr class="system0-post-row-line">
+</div>
+      
+    </div>
+  </div>
 </body>
+
 </html>
