@@ -1,32 +1,32 @@
-.system0-container {
+.system1-container {
   width: 100%;
-  height: 100%;
-  /* background-color: #111; */
+  /* height: 100%; */
+  background-color: #4096c8;
 }
 
-.system0-banner {
+.system1-banner {
   width: 100%;
   height: 10rem;
   /* background-color: red; */
   font-size: 48pt;
-  color: #50f078;
+  color: #fff;
   text-align: center;
   line-height: 10rem;
 }
 
-.system0-post-row-lines {
+.system1-post-row-lines {
   width: 100%;
   /* height: 100%; */
   /* background-color: #111; */
   margin-top: 3rem;
 }
 
-.system0-post-row-line {
+.system1-post-row-line {
   border: none;
-  border-top: 2px solid #333;
+  border-top: 2px solid #fff;
 }
 
-.system0-artical-row {
+.system1-artical-row {
   width: 55%;
   height: 15%;
   padding-bottom: 1rem;
@@ -34,7 +34,7 @@
   margin: 0 auto;
 }
 
-.system0-artical-row-row {
+.system1-artical-row-row {
   width: 90%;
   height: 90%;
   /* background-color: aqua; */
@@ -45,62 +45,65 @@
   padding-bottom: 2rem;
 }
 
-.system0-artical-row-thumb {
+.system1-artical-row-thumb {
   width: 6rem;
   height: 6rem;
-  background-color: #50f078;
+  background-color: #fff;
   margin-left: 2rem;
 }
 
-.system0-artical-row-simple {
+.system1-artical-row-simple {
   /* background-color: blue; */
   margin-left: 1rem;
 }
 
-.system0-artical-row-simple-a {
+.system1-artical-row-simple-a {
   text-decoration: none;
 }
 
-.system0-artical-row-simple-title {
-  color: #50f078;
+.system1-artical-row-simple-title {
+  color: #fff;
   font-size: 16pt;
 }
 
-.system0-artical-row-simple-author {
-  color: #50f078;
+.system1-artical-row-simple-author {
+  color: #fff;
   font-size: 12pt;
   display: flex;
   margin-top: 1rem;
 }
 
-.system0-post-container {
+.system1-post-container {
   width: 100%;
-  height: 100%;
-  background-color: #111;
-  color: #50f078;
+  /* height: 100%; */
+  background-color: #4096c8;
+  color: #fff;
 }
 
-.system0-post-atricle {
+.system1-post-atricle {
   width: 60%;
   margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
 }
 
-.system0-post-atricle-title {
+.system1-post-atricle-title {
   width: 100%;
   text-align: center;
   /* background-color: aliceblue; */
   font-size: 22pt;
 }
 
-.system0-footer {
+.system1-footer {
   width: 100%;
   height: 10rem;
   /* background-color: aliceblue; */
   display: flex;
   align-items: center;
+  background-color: #4096c8;
 }
 
-.system0-footer-copyright {
+.system1-footer-copyright {
   margin: 0 auto;
   font-size: 10pt;
   color: #ccc;

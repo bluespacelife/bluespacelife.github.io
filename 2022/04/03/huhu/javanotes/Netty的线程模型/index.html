@@ -13,6 +13,19 @@
 
      
 <meta name="generator" content="Hexo 5.4.0"></head>
+<head>
+    <meta charset="utf-8">
+    
+    
+<link rel="stylesheet" href="/css/bluespacelife.css">
+
+
+    <!-- system1 -->
+    
+<link rel="stylesheet" href="/css/system1/system1.css">
+
+     
+</head>
 
 
 <script src="/js/jquery.slim.min.js"></script>
@@ -67,20 +80,73 @@
     <div id="paginator">
       
     </div>
-    
+
     <div class="system0-footer">
-    <div class="system-footer-copyright">
-        Copyright © 2022 冰壶儿
+    <div class="system0-footer-copyright">
+        Copyright © 2022 壶壶
     </div>
 </div>
   </div>
 
+  <div id="system1-post-container" class="system1-post-container" hidden="hidden">
+    <div class="system1-banner">
+    大海
+</div>
+
+    <div class="system1-post-atricle">
+      <div class="system1-post-atricle-title">
+        <h1>
+          Netty的线程模型
+        </h1>
+      </div>
+      <div class="system1-post-atricle-author">
+
+      </div>
+      <div class="system1-post-atricle-content">
+        <h2 id="Netty的线程模型？"><a href="#Netty的线程模型？" class="headerlink" title="Netty的线程模型？"></a>Netty的线程模型？</h2><ul>
+<li>Netty通过Reactor模型基于多路复用器接收并处理用户请求，内部实现了两个线程池，boss线程池和work线程池，其中boss线程池的线程负责处理请求的accept事件，当接收到accept事件的请求时，把对应的socket封装到一个NioSocketChannel中，并交给work线程池，其中work线程池负责请求的read和write事件，由对应的Handler处理</li>
+<li>单线程模型：<ul>
+<li>所有I/O操作都由一个线程完成，即多路复用、事件分发和处理都是在一个Reactor线程上完成的</li>
+<li>既要接收客户端的连接请求，向服务端发起连接，又要发送/读取请求或应答/响应消息</li>
+<li>一个NIO 线程同时处理成百上千的链路，性能上无法支撑，速度慢，若线程进入死循环，整个程序不可用，对于高负载、大并发的应用场景不合适</li>
+</ul>
+</li>
+<li>多线程模型：<ul>
+<li>有一个NIO 线程（Acceptor） 只负责监听服务端，接收客户端的TCP 连接请求</li>
+<li>NIO 线程池负责网络IO 的操作，即消息的读取、解码、编码和发送</li>
+<li>1 个NIO 线程可以同时处理N 条链路，但是1 个链路只对应1 个NIO 线程，这是为了防止发生并发操作问题</li>
+<li>但在并发百万客户端连接或需要安全认证时，一个Acceptor 线程可能会存在性能不足问题</li>
+</ul>
+</li>
+<li>主从多线程模型：<ul>
+<li>Acceptor 线程用于绑定监听端口，接收客户端连接</li>
+<li>将SocketChannel 从主线程池的Reactor 线程的多路复用器上移除，重新注册到Sub 线程池的线程上</li>
+<li>用于处理I/O 的读写等操作，从而保证mainReactor只负责接入认证、握手等操作</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+  
+    <div id="paginator">
+      
+    </div>
+    
+    <div class="system1-footer">
+    <div class="system1-footer-copyright">
+        Copyright © 2022 冰冰
+    </div>
+</div>
+  </div>
 
   <script type="text/javascript">
     $(function() {
       let system = getUrlParam('system');
       if ("0" === system) {
         $("#system0-post-container").show();
+      } else if ("1" === system) {
+        $("#system1-post-container").show();
       }
     });
   </script>

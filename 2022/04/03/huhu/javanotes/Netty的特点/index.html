@@ -13,6 +13,19 @@
 
      
 <meta name="generator" content="Hexo 5.4.0"></head>
+<head>
+    <meta charset="utf-8">
+    
+    
+<link rel="stylesheet" href="/css/bluespacelife.css">
+
+
+    <!-- system1 -->
+    
+<link rel="stylesheet" href="/css/system1/system1.css">
+
+     
+</head>
 
 
 <script src="/js/jquery.slim.min.js"></script>
@@ -55,20 +68,61 @@
     <div id="paginator">
       
     </div>
-    
+
     <div class="system0-footer">
-    <div class="system-footer-copyright">
-        Copyright © 2022 冰壶儿
+    <div class="system0-footer-copyright">
+        Copyright © 2022 壶壶
     </div>
 </div>
   </div>
 
+  <div id="system1-post-container" class="system1-post-container" hidden="hidden">
+    <div class="system1-banner">
+    大海
+</div>
+
+    <div class="system1-post-atricle">
+      <div class="system1-post-atricle-title">
+        <h1>
+          Netty的特点
+        </h1>
+      </div>
+      <div class="system1-post-atricle-author">
+
+      </div>
+      <div class="system1-post-atricle-content">
+        <h2 id="Netty的特点"><a href="#Netty的特点" class="headerlink" title="Netty的特点"></a>Netty的特点</h2><ul>
+<li>一个高性能、异步事件驱动的NIO框架，它提供了对TCP、UDP和文件传输的支持</li>
+<li>使用更高效的socket底层，对epoll空轮询引起的cpu占用飙升在内部进行了处理，避免了直接使用NIO的陷阱，简化了NIO的处理方式。</li>
+<li>采用多种decoder/encoder 支持，对TCP粘包/分包进行自动化处理</li>
+<li>可使用接受/处理线程池，提高连接效率，对重连、心跳检测的简单支持</li>
+<li>可配置IO线程数、TCP参数， TCP接收和发送缓冲区使用直接内存代替堆内存，通过内存池的方式循环利用ByteBuf</li>
+<li>通过引用计数器及时申请释放不再引用的对象，降低了GC频率</li>
+<li>使用单线程串行化的方式，高效的Reactor线程模型</li>
+<li>大量使用了volitale、使用了CAS和原子类、线程安全类的使用、读写锁的使用</li>
+</ul>
+
+      </div>
+    </div>
+  
+    <div id="paginator">
+      
+    </div>
+    
+    <div class="system1-footer">
+    <div class="system1-footer-copyright">
+        Copyright © 2022 冰冰
+    </div>
+</div>
+  </div>
 
   <script type="text/javascript">
     $(function() {
       let system = getUrlParam('system');
       if ("0" === system) {
         $("#system0-post-container").show();
+      } else if ("1" === system) {
+        $("#system1-post-container").show();
       }
     });
   </script>
