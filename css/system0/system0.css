@@ -9,16 +9,16 @@
   height: 10rem;
   /* background-color: red; */
   font-size: 48pt;
-  color: rgb(255, 228, 107);
+  color: #50f078;
   text-align: center;
   line-height: 10rem;
 }
 
 .system0-post-row-lines {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   /* background-color: #111; */
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 
 .system0-post-row-line {
@@ -48,7 +48,7 @@
 .system0-artical-row-thumb {
   width: 6rem;
   height: 6rem;
-  background-color: rgb(255, 228, 107);
+  background-color: #50f078;
   margin-left: 2rem;
 }
 
@@ -62,13 +62,47 @@
 }
 
 .system0-artical-row-simple-title {
-  color: rgb(255, 228, 107);
+  color: #50f078;
   font-size: 16pt;
 }
 
 .system0-artical-row-simple-author {
-  color: rgb(255, 228, 107);
+  color: #50f078;
   font-size: 12pt;
   display: flex;
   margin-top: 1rem;
+}
+
+.system0-post-container {
+  width: 100%;
+  height: 100%;
+  background-color: #111;
+  color: #50f078;
+}
+
+.system0-post-atricle {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.system0-post-atricle-title {
+  width: 100%;
+  text-align: center;
+  /* background-color: aliceblue; */
+  font-size: 22pt;
+}
+
+.system0-footer {
+  width: 100%;
+  height: 10rem;
+  /* background-color: aliceblue; */
+  display: flex;
+  align-items: center;
+}
+
+.system-footer-copyright {
+  margin: 0 auto;
+  font-size: 10pt;
+  color: #ccc;
+  text-align: center;
 }

@@ -4,9 +4,6 @@
     <meta charset="utf-8">
     
     
-<link rel="stylesheet" href="/css/bootstrap.min.css">
-
-    
 <link rel="stylesheet" href="/css/bluespacelife.css">
 
 
@@ -26,11 +23,22 @@
 
 
 <body>
-  <article id="post">
-    <h1>
-      Java基础
-    </h1>
-    <h2 id="在-Java-中，为什么不允许从静态方法中访问非静态变量？"><a href="#在-Java-中，为什么不允许从静态方法中访问非静态变量？" class="headerlink" title="在 Java 中，为什么不允许从静态方法中访问非静态变量？"></a>在 Java 中，为什么不允许从静态方法中访问非静态变量？</h2><ul>
+  <div id="system0-post-container" class="system0-post-container" hidden="hidden">
+    <div class="system0-banner">
+    星辰
+</div>
+
+    <div class="system0-post-atricle">
+      <div class="system0-post-atricle-title">
+        <h1>
+          Java基础
+        </h1>
+      </div>
+      <div class="system0-post-atricle-author">
+
+      </div>
+      <div class="system0-post-atricle-content">
+        <h2 id="在-Java-中，为什么不允许从静态方法中访问非静态变量？"><a href="#在-Java-中，为什么不允许从静态方法中访问非静态变量？" class="headerlink" title="在 Java 中，为什么不允许从静态方法中访问非静态变量？"></a>在 Java 中，为什么不允许从静态方法中访问非静态变量？</h2><ul>
 <li>Java 中不能从静态上下文访问非静态数据只是因为非静态变量是跟具体的对象实例关联的，而静态的却没有和任何实例关联</li>
 </ul>
 <h2 id="在-Java-中，什么时候用重载，什么时候用重写？"><a href="#在-Java-中，什么时候用重载，什么时候用重写？" class="headerlink" title="在 Java 中，什么时候用重载，什么时候用重写？"></a>在 Java 中，什么时候用重载，什么时候用重写？</h2><ul>
@@ -48,11 +56,29 @@
 <li>有时，接口和抽象类可以一起使用，接口中定义函数，而在抽象类中定义默认的实现</li>
 </ul>
 
-  </article>
-
-  <div id="paginator">
+      </div>
+    </div>
+  
+    <div id="paginator">
+      
+    </div>
     
+    <div class="system0-footer">
+    <div class="system-footer-copyright">
+        Copyright © 2022 冰壶儿
+    </div>
+</div>
   </div>
+
+
+  <script type="text/javascript">
+    $(function() {
+      let system = getUrlParam('system');
+      if ("0" === system) {
+        $("#system0-post-container").show();
+      }
+    });
+  </script>
 </body>
 
 </html>

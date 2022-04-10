@@ -4,9 +4,6 @@
     <meta charset="utf-8">
     
     
-<link rel="stylesheet" href="/css/bootstrap.min.css">
-
-    
 <link rel="stylesheet" href="/css/bluespacelife.css">
 
 
@@ -26,11 +23,22 @@
 
 
 <body>
-  <article id="post">
-    <h1>
-      Netty NIOEventLoopGroup源码
-    </h1>
-    <h2 id="NIOEventLoopGroup源码？"><a href="#NIOEventLoopGroup源码？" class="headerlink" title="NIOEventLoopGroup源码？"></a>NIOEventLoopGroup源码？</h2><ul>
+  <div id="system0-post-container" class="system0-post-container" hidden="hidden">
+    <div class="system0-banner">
+    星辰
+</div>
+
+    <div class="system0-post-atricle">
+      <div class="system0-post-atricle-title">
+        <h1>
+          Netty NIOEventLoopGroup源码
+        </h1>
+      </div>
+      <div class="system0-post-atricle-author">
+
+      </div>
+      <div class="system0-post-atricle-content">
+        <h2 id="NIOEventLoopGroup源码？"><a href="#NIOEventLoopGroup源码？" class="headerlink" title="NIOEventLoopGroup源码？"></a>NIOEventLoopGroup源码？</h2><ul>
 <li>NioEventLoopGroup(其实是MultithreadEventExecutorGroup) 内部维护一个类型为 EventExecutor children [], 默认大小是处理器核数 * 2, 这样就构成了一个线程池，初始化EventExecutor时NioEventLoopGroup重载newChild方法，所以children元素的实际类型为NioEventLoop</li>
 <li>线程启动时调用SingleThreadEventExecutor的构造方法，执行NioEventLoop类的run方法，首先会调用hasTasks()方法判断当前taskQueue是否有元素。如果taskQueue中有元素，执行 selectNow() 方法，最终执行selector.selectNow()，该方法会立即返回。如果taskQueue没有元素，执行 select(oldWakenUp) 方法</li>
 <li>select ( oldWakenUp) 方法解决了 Nio 中的 bug，selectCnt 用来记录selector.select方法的执行次数和标识是否执行过selector.selectNow()，若触发了epoll的空轮询bug，则会反复执行selector.select(timeoutMillis)，变量selectCnt 会逐渐变大，当selectCnt 达到阈值（默认512），则执行rebuildSelector方法，进行selector重建，解决cpu占用100%的bug</li>
@@ -43,11 +51,29 @@
 <li>ByteBuf的特点：支持自动扩容（4M），保证put方法不会抛出异常、通过内置的复合缓冲类型，实现零拷贝（zero-copy）；不需要调用flip()来切换读/写模式，读取和写入索引分开；方法链；引用计数基于AtomicIntegerFieldUpdater用于内存回收；PooledByteBuf采用二叉树来实现一个内存池，集中管理内存的分配和释放，不用每次使用都新建一个缓冲区对象。UnpooledHeapByteBuf每次都会新建一个缓冲区对象</li>
 </ul>
 
-  </article>
-
-  <div id="paginator">
+      </div>
+    </div>
+  
+    <div id="paginator">
+      
+    </div>
     
+    <div class="system0-footer">
+    <div class="system-footer-copyright">
+        Copyright © 2022 冰壶儿
+    </div>
+</div>
   </div>
+
+
+  <script type="text/javascript">
+    $(function() {
+      let system = getUrlParam('system');
+      if ("0" === system) {
+        $("#system0-post-container").show();
+      }
+    });
+  </script>
 </body>
 
 </html>

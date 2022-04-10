@@ -4,9 +4,6 @@
     <meta charset="utf-8">
     
     
-<link rel="stylesheet" href="/css/bootstrap.min.css">
-
-    
 <link rel="stylesheet" href="/css/bluespacelife.css">
 
 
@@ -26,11 +23,22 @@
 
 
 <body>
-  <article id="post">
-    <h1>
-      Netty的线程模型
-    </h1>
-    <h2 id="Netty的线程模型？"><a href="#Netty的线程模型？" class="headerlink" title="Netty的线程模型？"></a>Netty的线程模型？</h2><ul>
+  <div id="system0-post-container" class="system0-post-container" hidden="hidden">
+    <div class="system0-banner">
+    星辰
+</div>
+
+    <div class="system0-post-atricle">
+      <div class="system0-post-atricle-title">
+        <h1>
+          Netty的线程模型
+        </h1>
+      </div>
+      <div class="system0-post-atricle-author">
+
+      </div>
+      <div class="system0-post-atricle-content">
+        <h2 id="Netty的线程模型？"><a href="#Netty的线程模型？" class="headerlink" title="Netty的线程模型？"></a>Netty的线程模型？</h2><ul>
 <li>Netty通过Reactor模型基于多路复用器接收并处理用户请求，内部实现了两个线程池，boss线程池和work线程池，其中boss线程池的线程负责处理请求的accept事件，当接收到accept事件的请求时，把对应的socket封装到一个NioSocketChannel中，并交给work线程池，其中work线程池负责请求的read和write事件，由对应的Handler处理</li>
 <li>单线程模型：<ul>
 <li>所有I/O操作都由一个线程完成，即多路复用、事件分发和处理都是在一个Reactor线程上完成的</li>
@@ -53,11 +61,29 @@
 </li>
 </ul>
 
-  </article>
-
-  <div id="paginator">
+      </div>
+    </div>
+  
+    <div id="paginator">
+      
+    </div>
     
+    <div class="system0-footer">
+    <div class="system-footer-copyright">
+        Copyright © 2022 冰壶儿
+    </div>
+</div>
   </div>
+
+
+  <script type="text/javascript">
+    $(function() {
+      let system = getUrlParam('system');
+      if ("0" === system) {
+        $("#system0-post-container").show();
+      }
+    });
+  </script>
 </body>
 
 </html>

@@ -4,9 +4,6 @@
     <meta charset="utf-8">
     
     
-<link rel="stylesheet" href="/css/bootstrap.min.css">
-
-    
 <link rel="stylesheet" href="/css/bluespacelife.css">
 
 
@@ -26,11 +23,22 @@
 
 
 <body>
-  <article id="post">
-    <h1>
-      Java NIO 的组成元素
-    </h1>
-    <h2 id="NIO的组成？"><a href="#NIO的组成？" class="headerlink" title="NIO的组成？"></a>NIO的组成？</h2><ul>
+  <div id="system0-post-container" class="system0-post-container" hidden="hidden">
+    <div class="system0-banner">
+    星辰
+</div>
+
+    <div class="system0-post-atricle">
+      <div class="system0-post-atricle-title">
+        <h1>
+          Java NIO 的组成元素
+        </h1>
+      </div>
+      <div class="system0-post-atricle-author">
+
+      </div>
+      <div class="system0-post-atricle-content">
+        <h2 id="NIO的组成？"><a href="#NIO的组成？" class="headerlink" title="NIO的组成？"></a>NIO的组成？</h2><ul>
 <li>Buffer：与Channel进行交互，数据是从Channel读入缓冲区，从缓冲区写入Channel中的</li>
 <li>flip方法 ： 反转此缓冲区，将position给limit，然后将position置为0，其实就是切换读写模式</li>
 <li>clear方法 ：清除此缓冲区，将position置为0，把capacity的值给limit</li>
@@ -44,11 +52,29 @@
 <li>NIO的服务端建立过程：Selector.open()：打开一个Selector；ServerSocketChannel.open()：创建服务端的Channel；bind()：绑定到某个端口上。并配置非阻塞模式；register()：注册Channel和关注的事件到Selector上；select()轮询拿到已经就绪的事件</li>
 </ul>
 
-  </article>
-
-  <div id="paginator">
+      </div>
+    </div>
+  
+    <div id="paginator">
+      
+    </div>
     
+    <div class="system0-footer">
+    <div class="system-footer-copyright">
+        Copyright © 2022 冰壶儿
+    </div>
+</div>
   </div>
+
+
+  <script type="text/javascript">
+    $(function() {
+      let system = getUrlParam('system');
+      if ("0" === system) {
+        $("#system0-post-container").show();
+      }
+    });
+  </script>
 </body>
 
 </html>

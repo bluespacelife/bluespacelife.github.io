@@ -4,9 +4,6 @@
     <meta charset="utf-8">
     
     
-<link rel="stylesheet" href="/css/bootstrap.min.css">
-
-    
 <link rel="stylesheet" href="/css/bluespacelife.css">
 
 
@@ -26,11 +23,22 @@
 
 
 <body>
-  <article id="post">
-    <h1>
-      Netty的特点
-    </h1>
-    <h2 id="Netty的特点"><a href="#Netty的特点" class="headerlink" title="Netty的特点"></a>Netty的特点</h2><ul>
+  <div id="system0-post-container" class="system0-post-container" hidden="hidden">
+    <div class="system0-banner">
+    星辰
+</div>
+
+    <div class="system0-post-atricle">
+      <div class="system0-post-atricle-title">
+        <h1>
+          Netty的特点
+        </h1>
+      </div>
+      <div class="system0-post-atricle-author">
+
+      </div>
+      <div class="system0-post-atricle-content">
+        <h2 id="Netty的特点"><a href="#Netty的特点" class="headerlink" title="Netty的特点"></a>Netty的特点</h2><ul>
 <li>一个高性能、异步事件驱动的NIO框架，它提供了对TCP、UDP和文件传输的支持</li>
 <li>使用更高效的socket底层，对epoll空轮询引起的cpu占用飙升在内部进行了处理，避免了直接使用NIO的陷阱，简化了NIO的处理方式。</li>
 <li>采用多种decoder/encoder 支持，对TCP粘包/分包进行自动化处理</li>
@@ -41,11 +49,29 @@
 <li>大量使用了volitale、使用了CAS和原子类、线程安全类的使用、读写锁的使用</li>
 </ul>
 
-  </article>
-
-  <div id="paginator">
+      </div>
+    </div>
+  
+    <div id="paginator">
+      
+    </div>
     
+    <div class="system0-footer">
+    <div class="system-footer-copyright">
+        Copyright © 2022 冰壶儿
+    </div>
+</div>
   </div>
+
+
+  <script type="text/javascript">
+    $(function() {
+      let system = getUrlParam('system');
+      if ("0" === system) {
+        $("#system0-post-container").show();
+      }
+    });
+  </script>
 </body>
 
 </html>
