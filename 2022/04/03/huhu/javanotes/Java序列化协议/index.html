@@ -24,6 +24,9 @@
     
 <link rel="stylesheet" href="/css/system1/system1.css">
 
+
+    <meta name="viewport" content="width=device-width,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">  
+    
      
 </head>
 
@@ -41,7 +44,7 @@
     星辰
 </div>
 
-    <div class="system0-post-atricle">
+    <div id="system0-post-atricle" class="system0-post-atricle">
       <div class="system0-post-atricle-title">
         <h1>
           Java序列化协议
@@ -163,7 +166,7 @@
     大海
 </div>
 
-    <div class="system1-post-atricle">
+    <div id="system1-post-atricle" class="system1-post-atricle">
       <div class="system1-post-atricle-title">
         <h1>
           Java序列化协议
@@ -287,6 +290,16 @@
         $("#system0-post-container").show();
       } else if ("1" === system) {
         $("#system1-post-container").show();
+      }
+
+      let isMobile = isMobileBrowser();
+      // alert(isMobile);
+      if (isMobile) {
+        $("#system0-post-atricle").css("width", "100%");
+        $("#system1-post-atricle").css("width", "100%");
+      } else {
+        $("#system0-post-atricle").css("width", "60%");
+        $("#system1-post-atricle").css("width", "60%");
       }
     });
   </script>
