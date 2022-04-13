@@ -39,6 +39,8 @@
 
 
 <body>
+  <input id="system" type="text" hidden value="0" />
+
   <div id="system0-post-container" class="system0-post-container" hidden="hidden">
     <div class="system0-banner">
     星辰
@@ -127,11 +129,13 @@
 
   <script type="text/javascript">
     $(function() {
-      let system = getUrlParam('system');
+      let system = $("#system").val();
       if ("0" === system) {
         $("#system0-post-container").show();
       } else if ("1" === system) {
         $("#system1-post-container").show();
+      } else {
+        $("#system0-post-container").show();
       }
 
       let isMobile = isMobileBrowser();
