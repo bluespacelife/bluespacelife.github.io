@@ -48,11 +48,11 @@
 .system0-article-row-thumb {
   width: 6rem;
   height: 6rem;
-  background-color: #50f078;
+  background-color: #fff;
   margin-left: 2rem;
 }
 
-.system1-article-row-thumb img {
+.system0-article-row-thumb img {
   width: 100%;
 }
 
