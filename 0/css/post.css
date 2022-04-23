@@ -1,0 +1,18 @@
+.post-container {
+    width: 100%;
+    min-height: 80%;
+    background-color: #111;
+    color: #50f078;
+}
+
+.post-atricle {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.post-atricle-title {
+    width: 100%;
+    text-align: center;
+    /* background-color: aliceblue; */
+    font-size: 22pt;
+}
