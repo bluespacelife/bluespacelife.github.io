@@ -137,6 +137,13 @@ html {
 .post-atricle {
     width: 60%;
     margin: 0 auto;
+    text-align: center;
+}
+
+.post-atricle img {
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
 .post-atricle-title {
