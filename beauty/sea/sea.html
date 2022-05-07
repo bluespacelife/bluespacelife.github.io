@@ -4,7 +4,7 @@
   <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>three.js webgl - shaders - ocean</title>
+		<title>星辰大海-大海</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
@@ -150,24 +150,24 @@
 
 				//
 
-				stats = new Stats();
-				container.appendChild( stats.dom );
+				// stats = new Stats();
+				// container.appendChild( stats.dom );
 
 				// GUI
 
-				const gui = new GUI();
+				// const gui = new GUI();
 
-				const folderSky = gui.addFolder( 'Sky' );
-				folderSky.add( parameters, 'elevation', 0, 90, 0.1 ).onChange( updateSun );
-				folderSky.add( parameters, 'azimuth', - 180, 180, 0.1 ).onChange( updateSun );
-				folderSky.open();
+				// const folderSky = gui.addFolder( 'Sky' );
+				// folderSky.add( parameters, 'elevation', 0, 90, 0.1 ).onChange( updateSun );
+				// folderSky.add( parameters, 'azimuth', - 180, 180, 0.1 ).onChange( updateSun );
+				// folderSky.open();
 
-				const waterUniforms = water.material.uniforms;
+				// const waterUniforms = water.material.uniforms;
 
-				const folderWater = gui.addFolder( 'Water' );
-				folderWater.add( waterUniforms.distortionScale, 'value', 0, 8, 0.1 ).name( 'distortionScale' );
-				folderWater.add( waterUniforms.size, 'value', 0.1, 10, 0.1 ).name( 'size' );
-				folderWater.open();
+				// const folderWater = gui.addFolder( 'Water' );
+				// folderWater.add( waterUniforms.distortionScale, 'value', 0, 8, 0.1 ).name( 'distortionScale' );
+				// folderWater.add( waterUniforms.size, 'value', 0.1, 10, 0.1 ).name( 'size' );
+				// folderWater.open();
 
 				//
 
