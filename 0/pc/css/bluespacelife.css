@@ -26,7 +26,6 @@ html {
 .category-post-row-lines {
     width: 100%;
     /* height: 100%; */
-    background-color: #111;
     /* margin-top: 3rem; */
 }
 
@@ -41,14 +40,20 @@ html {
     padding-top: 1rem;
     padding-bottom: 1rem;
     /* background-color: blueviolet; */
+    background-color: #3bbf5c;
+    opacity: 0.9;
     margin: 0 auto;
+    border-radius: 0.5rem;
+    margin-top: 0.2rem;
+    border: 0.2rem solid #fff;
 }
 
 .category-article-row-row {
     width: 90%;
     height: 90%;
     /* background-color: aqua; */
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    /* margin-top: 1rem; */
     display: flex;
     /* justify-content: center; */
     align-items: center;
@@ -76,12 +81,12 @@ html {
 }
 
 .category-article-row-simple-title {
-    color: #50f078;
+    color: #fff;
     font-size: 16pt;
 }
 
 .category-article-row-simple-author {
-    color: #50f078;
+    color: #fff;
     font-size: 12pt;
     display: flex;
     margin-top: 1rem;
