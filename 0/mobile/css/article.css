@@ -1,8 +1,8 @@
 html {
     width: 100%;
     min-height: 100%;
-    background-color: #111;
-    background-image: url('/images/earth.png');
+    /* background-color: #111; */
+    /* background-image: url('/images/earth.png'); */
     background-size: 100% auto;
     background-position-x: center;
     background-position-y: center;
@@ -10,7 +10,7 @@ html {
 
 .body {
     width: 100%;
-    min-height: 80%;
+    min-height: 90%;
     /* background-color: #111; */
 }
 
@@ -114,14 +114,15 @@ html {
 .post-container {
     width: 100%;
     min-height: 80%;
-    background-color: #111;
-    color: #50f078;
+    /* background-color: #111;
+    color: #50f078; */
 }
 
 .post-atricle {
     width: 82%;
     margin: 0 auto;
     font-size: 14pt;
+    line-height: 22pt;
     /* position: relative; */
     padding-top: 1rem;
     padding-bottom: 2rem;
@@ -136,9 +137,9 @@ html {
 }
 
 .post-atricle img {
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .footer {
@@ -153,6 +154,6 @@ html {
 .footer-copyright {
     margin: 0 auto;
     font-size: 10pt;
-    color: #f2be47;
+    /* color: #f2be47; */
     text-align: center;
 }
