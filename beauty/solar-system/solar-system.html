@@ -2,13 +2,14 @@
 <article id="page">
   <h1></h1>
   <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="background-stars">
 
 <head>
 	<title>星辰大海-太阳系</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<link type="text/css" rel="stylesheet" href="main.css">
+	<script async src="/js/background-stars.js"></script>
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
@@ -16,6 +17,12 @@
 	<div id="planet">
 
     </div>
+
+	<script>
+	  window.onload = function() {
+		starsBackgroundInit();
+	  }
+	</script>
 
 	<!-- Import maps polyfill -->
 	<!-- Remove this when import maps will be widely supported -->
@@ -61,7 +68,7 @@
 		// 创建相机
 		const setCamera = () => {
 			camera = new PerspectiveCamera(60, innerWidth / innerHeight, 1, 100000)
-			camera.position.set(0, 500, 2000)
+			camera.position.set(0, 500, 6000)
 			camera.lookAt(scene.position)
 		}
 
@@ -286,7 +293,7 @@
 			setSaturn() // 土星
 			setUranus()// 天王星
 			setNeptune()//海王星
-			starForge()//设置满天星背景
+			// starForge()//设置满天星背景
 			setControls() //设置可旋转控制
 			loop() // 循环动画
 		}
@@ -294,6 +301,7 @@
 		init();
 		// onMounted(init)
 		window.addEventListener('resize', onWindowResize)
+
 
 
 	</script>
