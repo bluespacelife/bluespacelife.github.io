@@ -1,5 +1,5 @@
 function starsBackgroundInit() {
-    let background = document.getElementById("background-stars");
+    let background = document.getElementsByTagName("html")[0];
 
     // 设置背景属性
     background.style.setProperty('position', 'relative');
@@ -14,10 +14,9 @@ function starsBackgroundInit() {
     background.appendChild(style);
     // 
     // 添加星星
-    let starNum = 2000;
+    let starNum = 1000;
     let starWidth = 0.06; // 星星宽度（px）
     let starHeight = 0.06; // 星星高度（px）
-    let blinkingSec = 5; // 闪烁间隔（秒）
     for (let i = 0; i < starNum; i++) {
         let starId = 'background-star-' + i;
         let top = Math.ceil(Math.random() * 100);
@@ -27,6 +26,8 @@ function starsBackgroundInit() {
         let starColorR = Math.ceil(Math.random() * 255);
         let starColorG = Math.ceil(Math.random() * 255);
         let starColorB = Math.ceil(Math.random() * 255);
+        let blinkingSec = Math.ceil(Math.random() * 5);// 闪烁间隔（秒）
+        // let blinkingSec = 5; // 闪烁间隔（秒）
         star.id = starId;
         star.style.setProperty('top', top + '%');
         star.style.setProperty('left', left + '%');
