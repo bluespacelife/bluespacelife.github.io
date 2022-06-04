@@ -1,8 +1,15 @@
 function starsBackgroundInit() {
-    let background = document.getElementsByTagName("html")[0];
+    let background_html = document.getElementsByTagName("html")[0];
+    const background = document.createElement('div');
+    // document.getElementsByTagName("body")[0].append(background);
+    let background_body = document.getElementsByTagName("body")[0];
+    background_body.insertBefore(background, background_body.firstChild);
 
     // 设置背景属性
-    background.style.setProperty('position', 'relative');
+    background.style.setProperty('position', 'fixed');
+    background.style.setProperty('z-index', '-1');
+    background.style.setProperty('left', '0');
+    background.style.setProperty('top', '0');
     background.style.setProperty('width', '100%');
     background.style.setProperty('height', '100%');
     background.style.setProperty('background-color', 'black');
@@ -11,7 +18,7 @@ function starsBackgroundInit() {
     const style = document.createElement('style');
     style.type = 'text/css';
     style.innerHTML = keyframes;
-    background.appendChild(style);
+    background_html.appendChild(style);
     // 
     // 添加星星
     let starNum = 1000;

@@ -1,0 +1,153 @@
+
+<article id="page">
+  <h1></h1>
+  <!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>three.js - water</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+
+	<div id="container"></div>
+
+	<!-- Import maps polyfill -->
+	<!-- Remove this when import maps will be widely supported -->
+	<script async src="/js/es-module-shims.js"></script>
+
+	<script type="importmap">
+			{
+				"imports": {
+					"three": "/js/three.module.js"
+				}
+			}
+		</script>
+
+	<script type="module">
+
+		import * as THREE from 'three';
+
+		import { OrbitControls } from './OrbitControls.js';
+		import { Water } from './Water2.js';
+		import { Sky } from './Sky.js';
+
+		let scene, camera, clock, renderer, water, sun;
+
+		let torusKnot;
+
+		const params = {
+			color: '#ffffff',
+			scale: 4,
+			flowX: 1,
+			flowY: 1
+		};
+
+		init();
+		animate();
+
+		function init() {
+
+			// renderer
+
+			renderer = new THREE.WebGLRenderer({ antialias: true });
+			renderer.setSize(window.innerWidth, window.innerHeight);
+			renderer.setPixelRatio(window.devicePixelRatio);
+			document.body.appendChild(renderer.domElement);
+
+			// scene
+
+			scene = new THREE.Scene();
+
+			// camera
+
+			camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 1, 20000);
+			camera.position.set(0, 10, 100);
+			// camera.lookAt(scene.position);
+
+			// clock
+
+			clock = new THREE.Clock();
+
+
+			const textureLoader = new THREE.TextureLoader();
+
+			// sky
+			var path = "./Park3Med/";//设置路径
+			var directions = ["px", "nx", "py", "ny", "pz", "nz"];//获取对象
+			var format = ".png";//格式
+			//创建盒子，并设置盒子的大小为( 5000, 5000, 5000 )
+			var skyGeometry = new THREE.BoxGeometry(5000, 5000, 5000);
+			//设置盒子材质
+			var materialArray = [];
+			for (var i = 0; i < 6; i++)
+				materialArray.push(new THREE.MeshBasicMaterial({
+					map: textureLoader.load(path + directions[i] + format),//将图片纹理贴上
+					side: THREE.DoubleSide /*镜像翻转，如果设置镜像翻转，那么只会看到黑漆漆的一片，因为你身处在盒子的内部，所以一定要设置镜像翻转。*/
+				}));
+			// var skyMaterial = new THREE.MeshFaceMaterial(materialArray);
+			var skyBox = new THREE.Mesh(skyGeometry, materialArray);//创建一个完整的天空盒，填入几何模型和材质的参数
+			scene.add(skyBox);
+
+
+			// light
+
+			const ambientLight = new THREE.AmbientLight(0xcccccc, 0.4);
+			scene.add(ambientLight);
+
+			const directionalLight = new THREE.DirectionalLight(0xffffff, 0.6);
+			directionalLight.position.set(- 1, 1, 1);
+			scene.add(directionalLight);
+
+
+			//
+
+			const controls = new OrbitControls(camera, renderer.domElement);
+			controls.minDistance = 5;
+			controls.maxDistance = 50;
+
+			//
+
+			window.addEventListener('resize', onWindowResize);
+
+		}
+
+		function onWindowResize() {
+
+			camera.aspect = window.innerWidth / window.innerHeight;
+			camera.updateProjectionMatrix();
+			renderer.setSize(window.innerWidth, window.innerHeight);
+
+		}
+
+		function animate() {
+
+			requestAnimationFrame(animate);
+
+			render();
+
+		}
+
+		function render() {
+
+			const delta = clock.getDelta();
+
+			// torusKnot.rotation.x += delta;
+			// torusKnot.rotation.y += delta * 0.5;
+
+			renderer.render(scene, camera);
+
+		}
+
+	</script>
+
+</body>
+
+</html>
+</article>
+
+<div id="paginator">
+  
+</div>

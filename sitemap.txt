@@ -1,6 +1,12 @@
-https://bluespacelife.github.io/beauty/solar-system/solar-system.html
-https://bluespacelife.github.io/publishes/bac0c976c2dc/
+https://bluespacelife.github.io/beauty/draft/star-river/star-river.html
 https://bluespacelife.github.io/beauty/star-river/star-river.html
+https://bluespacelife.github.io/beauty/star-river/star-river2.html
+https://bluespacelife.github.io/beauty/draft/star-river/star-river2.html
+https://bluespacelife.github.io/beauty/solar-system/solar-system.html
+https://bluespacelife.github.io/beauty/draft/textures/lottie/24017-lottie-logo-animation.json
+https://bluespacelife.github.io/beauty/star-river/textures/lottie/24017-lottie-logo-animation.json
+https://bluespacelife.github.io/beauty/draft/star-river/textures/lottie/24017-lottie-logo-animation.json
+https://bluespacelife.github.io/publishes/bac0c976c2dc/
 https://bluespacelife.github.io/publishes/a6e3f02288f0/
 https://bluespacelife.github.io/publishes/64ec9632cb08/
 https://bluespacelife.github.io/publishes/dc27838edf68/
